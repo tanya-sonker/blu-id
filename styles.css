@@ -247,8 +247,138 @@ article{
   }
 }
 
+/* ---------------- Mobile / small-tablet responsiveness ---------------- */
+
 @media (max-width:900px){
   .card-body{grid-template-columns: 1fr; gap:0.8rem}
   .portrait{min-height:280px}
   .side{flex-direction:row;justify-content:space-between;align-items:center}
+}
+/* general smaller screens (improves the existing 900px rule) */
+@media (max-width: 900px) {
+  body { padding: 1rem; }
+
+  .id-card{
+    width:100%;
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  /* stack layout: portrait on top, info below */
+  .card-body{
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding-right: 0;
+    align-items: start;
+  }
+
+  /* portrait area reduced */
+  .portrait{
+    min-height: 320px;
+    padding: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* make your CSS art scale to portrait width */
+  .portrait article,
+  .cat-art,
+  article {
+    width: 86%;
+    max-width: 360px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+  }
+
+  /* info block sits under the portrait with less top offset */
+  .info{
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    gap: 0.25rem;
+  }
+
+  /* compact each row a bit */
+  .info-row{
+    padding: 0.16rem 0;
+    gap: 0.4rem;
+    line-height: 1.1;
+  }
+
+  /* On smaller screens, stack label above value for readability */
+  .info-row{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info-row label{
+    width: 100%;
+    font-size: 0.85rem;
+    margin-bottom: 0.08rem;
+    white-space: normal;
+    color: var(--muted);
+  }
+  .info-row .value{
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  /* reduce header and footer sizes */
+  .card-header h1{ font-size: 0.95rem; letter-spacing: 0.08em; }
+  .country-line{ font-size: 0.85rem; }
+  .card-footer{ padding-top: 0.5rem; font-size: 0.8rem; }
+
+  /* ensure no horizontal overflow on tiny devices */
+  .id-card, .portrait, .info { overflow: hidden; }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  body { padding: 0.5rem; }
+  .id-card { padding: 0.8rem; border-radius: 8px; }
+  .portrait{ min-height: 260px; }
+  .portrait article,
+  .cat-art,
+  article { width: 92%; max-width: 300px; }
+  .info-row label{ font-size: 0.82rem; }
+  .info-row .value{ font-size: 0.98rem; }
+}
+
+/* ---------------- Tablet responsiveness (portrait & landscape) ---------------- */
+
+@media (min-width: 600px) and (max-width: 1024px) {
+
+  body {
+    padding: 1.5rem;
+  }
+
+  .id-card {
+    width: 100%;
+    max-width: 720px; /* fit nicely on iPad screen */
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+  }
+
+  /* two-column layout maintained but narrower */
+  .card-body {
+    grid-template-columns: 360px 1fr;
+    gap: 0.5rem;
+    padding-right: 1rem;
+    align-items: center;
+  }
+
+  /* adjust portrait and cat art scaling */
+  .portrait {
+    min-height: 360px;
+    padding: 0.75rem;
+  }
+
+  .portrait article,
+  .portrait .cat-art,
+  .portrait > article {
+    width: 90%;
+    max-width: 340px;
+  }
 }
